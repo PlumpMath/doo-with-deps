@@ -1,18 +1,12 @@
-(ns ^:figwheel-always doo-with-deps.core
-    (:require))
+(ns doo-with-deps.core
+  (:require [cljs.test :refer-macros [deftest is testing]]
+            [doo.runner :refer-macros [doo-tests]]
+            [jquery.core]))
 
 (enable-console-print!)
 
-(println "Edits to this text should show up in your developer console.")
+(deftest external-deps 
+  (testing "When starting the application, jQuery is present"
+    (is (exists? js/$))))
 
-;; define your app data so that it doesn't get over-written on reload
-
-(defonce app-state (atom {:text "Hello world!"}))
-
-
-(defn on-js-reload []
-  ;; optionally touch your app-state to force rerendering depending on
-  ;; your application
-  ;; (swap! app-state update-in [:__figwheel_counter] inc)
-)
-
+(doo-tests 'doo-with-deps.core)

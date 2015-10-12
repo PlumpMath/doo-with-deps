@@ -19,7 +19,7 @@
     :builds [{:id "test"
               :source-paths ["src"]
               :compiler {:main doo-with-deps.core
-                         :asset-path "js/compiled/out"
-                         :output-to "resources/public/js/compiled/doo_with_deps.js"
-                         :output-dir "resources/public/js/compiled/out"
-                         :source-map-timestamp true }}]})
+                         :output-to "out/testable.js"
+                         :source-map-timestamp true
+                         :foreign-libs [{:file "resources/vendor/jquery.js"
+                                         :provides ["jquery.core"]}]}}]})
